@@ -8,7 +8,6 @@ import seaborn
 from spectral import utils, affinity, clustering
 
 seaborn.set()
-
 methods = [
     (affinity.compute_affinity, 'Basic Affinity'),
     (affinity.com_aff_local_scaling, 'Affinity Local Scaling'),
@@ -39,8 +38,8 @@ for i in range(W_plot):
         N = X.shape[0]
         K = num_classes.get(data_sets[j], 3)
         affinity, name = methods[i]
-        A = affinity(X)
-        print("SC on dataset %r with %d clases with method %r" % (data_sets[j], K, name))
+        A = affinity(X) #构建相似矩阵
+        print("SC on dataset %r with %d classes with method %r" % (data_sets[j], K, name))
         Y = clustering.spectral_clustering(A, K)
 
         colors = numpy.array(list(islice(cycle(seaborn.color_palette()), int(max(Y) + 1))))

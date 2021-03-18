@@ -20,7 +20,8 @@ def k_means(X, n_clusters):
 
 def spectral_clustering(affinity, n_clusters, cluster_method=k_means):
     L = laplacian(affinity)
-    eig_val, eig_vect = scipy.sparse.linalg.eigs(L, n_clusters)
+    # eig_val, eig_vect = scipy.sparse.linalg.eigs(L, n_clusters,tol=1e-6)
+    eig_val, eig_vect = scipy.sparse.linalg.eigs(L, n_clusters, tol=1e-6)
     X = eig_vect.real
     rows_norm = numpy.linalg.norm(X, axis=1, ord=2)
     Y = (X.T / rows_norm).T

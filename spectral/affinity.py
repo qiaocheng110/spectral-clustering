@@ -52,6 +52,7 @@ def _auto_prunning_cost(X, K, b, v, gamma=0.5):
 def _auto_prunning_find_b(X, v, affinity):
     K = affinity(X)
 
+#构建一个求解极值迭代汉书
     def cost_b(x):
         return -1 * _auto_prunning_cost(X, K, x, v)  # we need to maximize this function
 
